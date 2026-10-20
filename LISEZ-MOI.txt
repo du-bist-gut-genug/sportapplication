@@ -1,0 +1,118 @@
+PROGRAMME HYPERTROPHIE — version v22
+====================================
+
+Ce zip contient TOUS les fichiers du site, deja corriges.
+Il corrige le probleme "Chrome dit que l'app est deja installee".
+
+Ce qui a change par rapport a ce qui est en ligne :
+  - index.html          : les nouveautes (voir plus bas)
+  - sw.js               : muscu-v22, manifeste en reseau-d'abord
+  - manifest.webmanifest: "id" -> /muscu-app?v=3
+  Reuploade les 8 fichiers, c'est plus simple et sans risque.
+
+Les nouveautes de cette version (v22) : grille de regularite
+  - sur l'accueil, une case par jour sur 6 mois ou 1 an
+  - nombre de seances et pourcentage des jours prevus honores
+
+Rappel de la v21 : selecteurs de charge redessines
+  - barre : vraie barre olympique de 20 kg, disques aux couleurs de
+    competition, petits disques 2,5 et 1,25 visibles sans defiler
+  - machines a cables : pile de plaques d'acier, tiges guides, goupille
+  - halteres : halteres de salle a tetes qui grossissent, montage
+    DOMYOS a disques a la maison, reglette de charges
+
+Rappel de la v20 : interface allegee
+  - plus de bandeau avec la date et le cycle en haut
+  - accueil : la serie, la seance du jour, la semaine sur une ligne
+  - les alertes (stagnation, desequilibre) sont dans Progression
+  - en seance : seul l'exercice en cours est deplie ; outils et options
+    de l'exercice derriere un bouton
+
+Rappel de la v19 :
+  - choix de la charge en seance, selon le materiel :
+      * machines a pile : on touche le niveau de la pile
+      * barre : on pose les disques par paire, le total se calcule seul
+        (presse, hack squat, hip thrust machine, developpe guide :
+        disques seuls, le chariot n'est pas compte)
+      * halteres : on glisse le doigt, ou on touche la charge ;
+        la charge est celle d'UN haltere
+  - Reglages > Materiel : halteres de la salle et poignee DOMYOS
+  - corrige : "2,5" dans la liste des disques etait coupe en 2 et 5
+
+Rappel de la v18 :
+  - interface refaite, claire ou sombre selon le reglage du telephone
+    (modifiable dans Reglages > Apparence)
+  - les 16 icones de palier redessinees d'apres ta planche, et animees
+  - nouvel ecran "Ton evolution" : touche la carte de serie
+  - l'annonce de deload est rangee en haut de l'accueil, sous la serie
+  - en-tete : date du jour et avancee dans le cycle de 7 semaines
+  - seance "Reveil" retiree
+  - les tests de force affichent "Developpe couche barre" au lieu de "dc-m"
+
+
+MARCHE A SUIVRE
+---------------
+
+1. Decompresse ce zip. Tu dois obtenir 8 fichiers EN VRAC
+   (index.html, sw.js, manifest.webmanifest, les 4 images, ce fichier).
+   Il ne doit PAS y avoir de dossier autour.
+
+2. Va sur https://github.com/du-bist-gut-genug/sportttttttt
+
+3. Bouton "Add file" en haut a droite -> "Upload files"
+
+4. Glisse les 8 fichiers dans la zone, d'un seul coup.
+   GitHub remplacera les anciens automatiquement.
+
+5. Descends en bas -> bouton vert "Commit changes"
+
+6. Attends 1 a 2 minutes, le temps que GitHub Pages republie.
+
+
+VERIFICATION AVANT DE TOUCHER AU TELEPHONE
+------------------------------------------
+
+Ouvre dans ton navigateur :
+  https://du-bist-gut-genug.github.io/sportttttttt/sw.js
+
+Tu dois y lire "muscu-v22" et le mot "reseauDabord".
+
+Tant que tu lis encore une version anterieure, ce n'est pas republie :
+attends un peu et recharge. Inutile d'essayer d'installer avant.
+
+
+SUR LE TELEPHONE, DANS CET ORDRE
+--------------------------------
+
+1. Appui long sur l'ancienne icone "Muscu" -> Desinstaller.
+   Important : l'identite de l'app a change, l'ancienne installation
+   devient une app fantome qui bloque la proposition.
+
+2. Ouvre Chrome sur https://du-bist-gut-genug.github.io/sportttttttt/
+   Charge la page DEUX fois :
+     - le 1er chargement recupere le nouveau service worker
+     - le 2e sert enfin le manifeste a jour
+
+3. Menu ... de Chrome -> "Installer l'application" doit apparaitre.
+
+
+SI CA RESISTE ENCORE
+--------------------
+
+Chrome -> Parametres -> Confidentialite et securite
+       -> Effacer les donnees de navigation
+       -> coche "Images et fichiers en cache" -> Effacer
+
+Puis recharge le site deux fois.
+
+
+A SAVOIR
+--------
+
+Ne rechange plus le champ "id" du manifeste sans raison.
+Chaque nouvelle valeur cree une nouvelle app aux yeux de Chrome,
+et l'ancienne icone reste orpheline sur le telephone.
+
+Tes donnees (seances, charges, historique, serie de jours) sont
+stockees dans le navigateur et ne sont PAS effacees par cette
+mise a jour. Elles survivent a la reinstallation de l'app.
