@@ -1,4 +1,4 @@
-PROGRAMME HYPERTROPHIE — version v24
+PROGRAMME HYPERTROPHIE — version v25
 ====================================
 
 Ce zip contient TOUS les fichiers du site, deja corriges.
@@ -6,11 +6,19 @@ Il corrige le probleme "Chrome dit que l'app est deja installee".
 
 Ce qui a change par rapport a ce qui est en ligne :
   - index.html          : les nouveautes (voir plus bas)
-  - sw.js               : muscu-v24, manifeste en reseau-d'abord
+  - sw.js               : muscu-v25, manifeste en reseau-d'abord
   - manifest.webmanifest: "id" -> /muscu-app?v=3
   Reuploade les 8 fichiers, c'est plus simple et sans risque.
 
-Les nouveautes de cette version (v24) :
+Les nouveautes de cette version (v25) :
+  - l'app ne rame plus : les flammes ne tournent plus en boucle
+    (elles s'animent a l'ouverture puis s'arretent), seule la flamme
+    du palier en cours bouge dans "Ton evolution"
+  - Progression et Historique s'affichent beaucoup plus vite
+    (l'historique montre les 40 dernieres seances, bouton pour la suite)
+  - la barre du chrono de repos ne force plus de recalcul a chaque image
+
+Rappel de la v24 :
   - le cycle suivant demarre tout seul apres la semaine de deload
     (avant, l'app restait bloquee en deload)
   - filet de securite : si un ecran plante, l'app affiche le probleme
@@ -93,7 +101,7 @@ VERIFICATION AVANT DE TOUCHER AU TELEPHONE
 Ouvre dans ton navigateur :
   https://du-bist-gut-genug.github.io/sportttttttt/sw.js
 
-Tu dois y lire "muscu-v24" et le mot "reseauDabord".
+Tu dois y lire "muscu-v25" et le mot "reseauDabord".
 
 Tant que tu lis encore une version anterieure, ce n'est pas republie :
 attends un peu et recharge. Inutile d'essayer d'installer avant.

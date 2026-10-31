@@ -2,7 +2,7 @@
    v24 : le manifeste et la navigation passent en reseau-d'abord,
    les icones restent en cache-d'abord. */
 
-const VERSION = "muscu-v24";
+const VERSION = "muscu-v25";
 
 /* Mis en cache a l'installation. Un fichier manquant ne fait plus
    echouer toute l'installation. */

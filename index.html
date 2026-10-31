@@ -746,44 +746,49 @@ button.st{cursor:pointer;font-family:inherit}
 @keyframes tostIn{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:translateY(0)}}
 @keyframes tostOut{to{opacity:0;transform:translateY(10px)}}
 
-/* ══ icônes de palier : animations par parties ══ */
+/* ══ icônes de palier : animations par parties ══
+   Les animations SVG se recalculent sur le processeur à chaque image : en boucle
+   infinie, la seule flamme de l'accueil occupait un quart du processeur d'un
+   téléphone, et l'écran des seize paliers les trois quarts, d'où les gels. Elles
+   jouent donc quelques tours à l'affichage puis s'arrêtent ; la flamme garde une
+   respiration lente, portée par la carte graphique (transform sur un élément HTML). */
 .fl{display:block;overflow:visible}
 .fl .dz,.fl .dzi,.fl .dzc,.fl .sp,.fl .lueur,.fl .eti,.fl .frappe,.fl .tourb,.fl .jet,.fl .gte,.fl .file,.fl .queue,.fl .scint,.fl .glint,.fl .rayons,.fl .disque{transform-box:fill-box}
-.fl .dz{transform-origin:50% 100%;animation:dz 1.7s ease-in-out infinite}
+.fl .dz{transform-origin:50% 100%;animation:dz 1.7s ease-in-out var(--fl-it,2)}
 .fl .dz.d2{animation-duration:1.45s;animation-delay:-.4s}
 .fl .dz.d3{animation-duration:1.9s;animation-delay:-.9s}
 .fl .dz.lent{animation-duration:2.6s}
 .fl .dz.sway{animation-name:sway;animation-duration:2.4s}
-.fl .dzi{transform-origin:50% 100%;animation:dzi 1.05s ease-in-out infinite}
-.fl .dzc{transform-origin:50% 100%;animation:dzi .8s ease-in-out infinite reverse}
+.fl .dzi{transform-origin:50% 100%;animation:dzi 1.05s ease-in-out var(--fl-it,2)}
+.fl .dzc{transform-origin:50% 100%;animation:dzi .8s ease-in-out var(--fl-it,2) reverse}
 @keyframes dz{0%,100%{transform:scale(1,1) skewX(0)}
   25%{transform:scale(.95,1.06) skewX(-3deg)}
   52%{transform:scale(1.04,.96) skewX(2.5deg)}
   78%{transform:scale(.98,1.03) skewX(-1deg)}}
 @keyframes dzi{0%,100%{transform:scale(1,1)}45%{transform:scale(.9,1.1)}72%{transform:scale(1.06,.94)}}
 @keyframes sway{0%,100%{transform:rotate(-3deg) scale(1,1)}50%{transform:rotate(3deg) scale(.96,1.05)}}
-.fl .sp{opacity:0;transform-origin:50% 50%;animation:sp 2.6s ease-out infinite}
+.fl .sp{opacity:0;transform-origin:50% 50%;animation:sp 2.6s ease-out var(--fl-it,2)}
 @keyframes sp{0%{opacity:0;transform:translateY(6px) scale(.5)}
   20%{opacity:1}100%{opacity:0;transform:translateY(-16px) scale(.2)}}
-.fl .lueur{transform-origin:50% 50%;animation:lueur 2.4s ease-in-out infinite}
+.fl .lueur{transform-origin:50% 50%;animation:lueur 2.4s ease-in-out var(--fl-it,2)}
 @keyframes lueur{0%,100%{opacity:.55;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}
-.fl .eti{transform-origin:50% 100%;animation:eti 2.2s ease-in-out infinite}
+.fl .eti{transform-origin:50% 100%;animation:eti 2.2s ease-in-out var(--fl-it,2)}
 @keyframes eti{0%{opacity:0;transform:translateY(10px) scale(.4)}
   30%{opacity:1;transform:translateY(0) scale(1)}70%{opacity:1;transform:translateY(-3px) scale(.9)}
   100%{opacity:0;transform:translateY(-9px) scale(.3)}}
-.fl .frappe{transform-origin:50% 100%;opacity:0;animation:frappe 1.6s ease-out infinite}
+.fl .frappe{transform-origin:50% 100%;opacity:0;animation:frappe 1.6s ease-out var(--fl-it,2)}
 @keyframes frappe{0%,62%{opacity:0;transform:scale(.4)}68%{opacity:1;transform:scale(1)}
   100%{opacity:0;transform:scale(1.35)}}
-.fl .tourb{transform-origin:50% 80%;animation:tourb 2.8s ease-in-out infinite}
+.fl .tourb{transform-origin:50% 80%;animation:tourb 2.8s ease-in-out var(--fl-it,2)}
 @keyframes tourb{0%,100%{transform:rotate(-6deg) scale(1)}50%{transform:rotate(7deg) scale(1.05,.97)}}
-.fl .jet{transform-origin:50% 100%;animation:jet 1.3s ease-in-out infinite}
+.fl .jet{transform-origin:50% 100%;animation:jet 1.3s ease-in-out var(--fl-it,2)}
 .fl .jet.j2{animation-duration:.9s}
 .fl .jet.j3{transform-origin:50% 100%;animation-duration:1.7s;animation-delay:-.5s}
 @keyframes jet{0%,100%{transform:scale(.8,.75)}50%{transform:scale(1.08,1.12)}}
-.fl .coul{animation:coul 2.2s ease-in-out infinite}
+.fl .coul{animation:coul 2.2s ease-in-out var(--fl-it,2)}
 .fl .coul.c2{animation-delay:-1.1s}
 @keyframes coul{0%,100%{opacity:.75}50%{opacity:1}}
-.fl .gte{opacity:0;animation:gt1 1.6s cubic-bezier(.3,.6,.6,1) infinite}
+.fl .gte{opacity:0;animation:gt1 1.6s cubic-bezier(.3,.6,.6,1) var(--fl-it,2)}
 .fl .k2{animation-name:gt2;animation-delay:.5s}
 .fl .k3{animation-name:gt3;animation-delay:1s}
 .fl .k4{animation-name:gt1;animation-delay:.25s;animation-duration:1.9s}
@@ -795,19 +800,19 @@ button.st{cursor:pointer;font-family:inherit}
   50%{transform:translate(9px,-9px)}100%{opacity:0;transform:translate(15px,6px)}}
 @keyframes gt3{0%{opacity:0;transform:translate(0,4px)}15%{opacity:1}
   50%{transform:translate(1px,-12px)}100%{opacity:0;transform:translate(3px,2px)}}
-.fl .file{transform-origin:30% 70%;animation:file 3.2s ease-in-out infinite}
+.fl .file{transform-origin:30% 70%;animation:file 3.2s ease-in-out var(--fl-it,2)}
 @keyframes file{0%,100%{transform:translate(0,0)}50%{transform:translate(2px,-2px)}}
-.fl .queue{transform-origin:0% 100%;animation:queue 1.2s ease-in-out infinite}
+.fl .queue{transform-origin:0% 100%;animation:queue 1.2s ease-in-out var(--fl-it,2)}
 .fl .queue.q2{animation-duration:.85s;animation-delay:-.3s}
 @keyframes queue{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.92);opacity:.8}}
-.fl .scint{transform-origin:50% 50%;animation:scint 2.6s ease-in-out infinite}
+.fl .scint{transform-origin:50% 50%;animation:scint 2.6s ease-in-out var(--fl-it,2)}
 @keyframes scint{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.08) rotate(8deg)}}
-.fl .glint{transform-origin:50% 50%;opacity:0;animation:glint 2.6s ease-in-out infinite}
+.fl .glint{transform-origin:50% 50%;opacity:0;animation:glint 2.6s ease-in-out var(--fl-it,2)}
 .fl .glint.gl2{animation-delay:1.3s}
 @keyframes glint{0%,100%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1.1)}}
-.fl .rayons{transform-origin:50% 50%;animation:rayons 22s linear infinite}
+.fl .rayons{transform-origin:50% 50%;animation:rayons 9s cubic-bezier(.3,.6,.4,1) 1}
 @keyframes rayons{to{transform:rotate(360deg)}}
-.fl .disque{transform-origin:50% 50%;animation:disque 3s ease-in-out infinite}
+.fl .disque{transform-origin:50% 50%;animation:disque 3s ease-in-out var(--fl-it,2)}
 @keyframes disque{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 /* figée : palier pas encore atteint, série en veille ou en pause */
 .fl.fige *{animation:none!important}
@@ -855,7 +860,7 @@ button.st{cursor:pointer;font-family:inherit}
 .flamme.grand{width:112px;height:112px;margin:0 auto;animation:entree .6s var(--ease) both}
 .flamme.geante{width:200px;height:200px;margin:0 auto;border-radius:0;background:none;animation:entree .7s var(--ease) both}
 .flamme.geante::before{content:"";position:absolute;inset:-30px;border-radius:50%;
-  background:radial-gradient(circle at 50% 58%,rgba(255,150,40,.42),transparent 64%);animation:halo 2.6s ease-in-out infinite}
+  background:radial-gradient(circle at 50% 58%,rgba(255,150,40,.42),transparent 64%);animation:halo 2.6s ease-in-out 3}
 .flamme.geante .fl{width:200px;height:200px;position:relative}
 @keyframes halo{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
 @keyframes entree{0%{transform:scale(.3) rotate(-14deg);opacity:0}
@@ -1439,7 +1444,7 @@ body.ile-on #app{padding-top:calc(env(safe-area-inset-top,0px) + 56px)}
 /* seconde rangée : la jauge du repos, +15 s, Passer */
 .dyn-bas{gap:8px}
 .dyn-rail{flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,0.22);overflow:hidden}
-.dyn-rail>span{display:block;height:100%;background:#e09a12;border-radius:inherit;transition:width .25s linear}
+.dyn-rail>span{display:block;width:100%;height:100%;background:#e09a12;transform-origin:0 50%;transition:transform .25s linear}
 .dyn-pill.go .dyn-rail>span{background:#30d158}
 .dyn-chip{flex:none;height:32px;padding:0 13px;border:0;border-radius:16px;background:rgba(255,255,255,.14);color:#fff;
   font:600 12.5px var(--font-ui);cursor:pointer}
@@ -1458,6 +1463,12 @@ body.ile-on #app{padding-top:calc(env(safe-area-inset-top,0px) + 56px)}
 .secours p{line-height:1.5}
 .secours pre{margin-top:12px;padding:10px 12px;border-radius:12px;background:var(--card2);font-size:11.5px;
   white-space:pre-wrap;word-break:break-word;color:var(--dim);max-height:160px;overflow:auto}
+
+/* ════════════════ PERFORMANCES (v25) ════════════════ */
+/* respiration de la flamme : un transform sur la boîte HTML, calculé par la carte graphique */
+/* plus aucune animation sans fin : même une simple respiration de la flamme recalculait le style 60 fois par seconde sur le fil principal */
+/* le flou derrière la barre du bas se recalculait à chaque défilement */
+.nav{-webkit-backdrop-filter:none;backdrop-filter:none;background:var(--card)}
 </style>
 </head>
 <body>
@@ -2182,7 +2193,7 @@ var VIDE={logs:[],mesures:[],active:null,debutCycle:null,cycle:1,customs:{},mato
           choix:null,theme:"auto",streakMax:0,reprise:null,photos:[],cibleTemps:null,echauf:true,tests:[],couleur:null,sensations:[],
           niveau:{},pauses:[],voyage:false};
 var S=null, vue="accueil", jourVu=null, finAt=null, finTotal=0, sonne=false;
-var outilsOuverts=false, optionsEx=false;   /* menus repliés de la séance */
+var outilsOuverts=false, optionsEx=false, histoMax=40;   /* menus repliés de la séance */
 var champ={charge:0,reps:0,cote:null}, exSel=[], ouvertLog=null, ressenti=null, modal=null, msg=null;
 var wl=null, vuePrec=null, chronoEx=null, flashPR=null, flashT=null, msgT=null;
 
@@ -3345,7 +3356,7 @@ function ileOuvert(r){
       '<span class="dyn-grow"></span>'+
       '<span class="dyn-big '+(go?"dyn-green":"dyn-amber")+'" data-t>'+(go?"Go":mmss(r))+'</span></span>'+
     '<span class="dyn-row dyn-bas">'+
-      '<span class="dyn-rail"><span data-rail style="width:'+pc+'%"></span></span>'+
+      '<span class="dyn-rail"><span data-rail style="transform:scaleX('+(pc/100).toFixed(4)+')"></span></span>'+
       '<button class="dyn-chip" data-act="plus15">+15 s</button>'+
       '<button class="dyn-chip dyn-pass" data-act="passer">Passer</button></span>';
 }
@@ -3437,9 +3448,10 @@ function majIle(){
     ileVers(ile.open?ileOuverte():ILE_COMPACT);
   }else{
     var ts=ile.pill.querySelectorAll(".dyn-l:not(.part) [data-t]");
-    for(var i=0;i<ts.length;i++)ts[i].textContent=go?(ile.open?"Go":"C'est reparti"):mmss(r);
+    var tx=go?(ile.open?"Go":"C'est reparti"):mmss(r);
+    for(var i=0;i<ts.length;i++)if(ts[i].textContent!==tx)ts[i].textContent=tx;
     var rl=ile.pill.querySelector(".dyn-l:not(.part) [data-rail]");
-    if(rl)rl.style.width=Math.max(0,Math.min(100,(r/Math.max(1,finTotal))*100))+"%";
+    if(rl)rl.style.transform="scaleX("+Math.max(0,Math.min(1,r/Math.max(1,finTotal))).toFixed(4)+")";
   }
 }
 /* la pause gèle l'heure de fin : on la repousse à chaque battement */
@@ -3972,8 +3984,9 @@ function vEvo(){
   PALIERS.forEach(function(p,k){
     var etat=k===pa.i?"cur":(k<=recI?"ok":"lock");
     var sous=etat==="cur"?"Ton palier":(etat==="ok"?"Déjà atteint":"Dans "+jours(p.n-st.n));
+    /* une seule icône animée à la fois : seize SVG animés figeaient l'écran */
     h+='<div class="evo-t '+etat+'"><div class="evo-ic">'+
-       flammeSVG(0,k).replace('class="fl ','class="fl'+(etat==="lock"?' fige':'')+' ')+'</div>'+
+       flammeSVG(0,k).replace('class="fl ','class="fl'+(etat==="cur"?'':' fige')+' ')+'</div>'+
        '<b>'+esc(p.nom)+'</b><span class="evo-j">'+(p.n===0?'Dès le 1er jour':jours(p.n))+'</span>'+
        '<span class="evo-e">'+sous+'</span></div>';
   });
@@ -4042,6 +4055,17 @@ function blocMuscles(prevu){
 }
 
 /* ═══════════ VUES ═══════════ */
+/* ═══════════ FORMATS RAPIDES ═══════════
+   toLocaleDateString / toLocaleString recréent un formateur à chaque appel : sur
+   l'historique et la progression, appelés des milliers de fois, ils bloquaient
+   l'écran plus d'une seconde sur téléphone. Mêmes sorties, écrites à la main. */
+function dateCourte(x){var d=new Date(x);return d.getDate()+" "+MOIS_C[d.getMonth()];}
+function dateJJMM(x){var d=new Date(x);return String(d.getDate()).padStart(2,"0")+"/"+String(d.getMonth()+1).padStart(2,"0");}
+function nbFR(n){
+  n=Math.round(n);var neg=n<0,t=String(Math.abs(n)),o="";
+  while(t.length>3){o=" "+t.slice(-3)+o;t=t.slice(0,-3);}
+  return (neg?"-":"")+t+o;
+}
 /* ═══════════ FILET DE SÉCURITÉ ═══════════
    Si un écran plante, l'app ne tombe plus : on affiche ce qui s'est passé, un
    bouton pour revenir à l'accueil, et l'erreur reste notée (Réglages > Problèmes)
@@ -4358,7 +4382,8 @@ function exosDuLog(l){var ids=[],v={};l.series.forEach(function(s){if(!v[s.exId]
 function vHisto(){
   if(!S.logs.length)return '<div class="wrap"><div class="emp">Aucune séance enregistrée.<br>Démarre celle du jour depuis l\'accueil.</div></div>';
   var ordre=[],map={};
-  S.logs.slice().reverse().forEach(function(l){
+  /* 40 séances à la fois : des centaines de cartes d'un coup bloquaient l'écran */
+  S.logs.slice().reverse().slice(0,histoMax).forEach(function(l){
     var k="Cycle "+l.cycle+" · Semaine "+l.semaine;
     if(!map[k]){map[k]=[];ordre.push(k);}
     map[k].push(l);
@@ -4370,9 +4395,9 @@ function vHisto(){
       h+='<div class="card tap" data-act="toggle" data-id="'+l.id+'" style="animation-delay:'+(idx*35)+'ms">'+
          '<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">'+
          '<b style="font-size:14.5px">'+esc(l.nom||l.seanceId)+'</b>'+
-         '<span class="mut">'+new Date(l.date).toLocaleDateString("fr-FR",{day:"numeric",month:"short"})+'</span></div>'+
+         '<span class="mut">'+dateCourte(l.date)+'</span></div>'+
          '<div class="mut" style="margin-top:4px">'+(l.lieu==="salle"?"Salle":"Maison")+' · '+l.series.length+' séries · volume '+
-         Math.round(volume(l)).toLocaleString("fr-FR")+' kg'+(l.ressenti?' · ressenti '+l.ressenti+'/5':'')+'</div>';
+         nbFR(Math.round(volume(l)))+' kg'+(l.ressenti?' · ressenti '+l.ressenti+'/5':'')+'</div>';
       if(ouvertLog===l.id){
         h+='<div class="det">';
         exosDuLog(l).forEach(function(id){
@@ -4387,6 +4412,7 @@ function vHisto(){
       h+='</div>';
     });
   });
+  if(S.logs.length>histoMax)h+='<button class="btn gh" data-act="histoplus">Voir les séances plus anciennes ('+(S.logs.length-histoMax)+')</button>';
   return h+'</div>';
 }
 
@@ -4403,17 +4429,30 @@ function tousLesExos(){
     if(!vus[x.exId]){vus[x.exId]=1;t.push(getEx(x.exId));}});});
   return t;
 }
-function pointsExo(id){
-  var ex=getEx(id),out=[];
+/* La Progression interrogeait chaque exercice en reparcourant tout l'historique :
+   80 exercices × des centaines de séances à chaque affichage. L'index est construit
+   en un passage et gardé tant que l'historique ne change pas. */
+var idxPoints={cle:null,m:null};
+function indexPoints(){
+  var dern=S.logs.length?S.logs[S.logs.length-1]:null;
+  var cle=S.logs.length+"|"+(dern?(dern.id||dern.date)+"|"+dern.series.length:"");
+  if(idxPoints.cle===cle)return idxPoints.m;
+  var m={};
   S.logs.forEach(function(l){
-    var ss=l.series.filter(function(x){return x.exId===id;});
-    if(!ss.length)return;
-    var best=ss.reduce(function(a,b){return (b.charge||1)*b.reps>(a.charge||1)*a.reps?b:a;});
-    out.push({t:new Date(l.date).getTime(),
-              date:new Date(l.date).toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit"}),
-              val:ex.type==="poids"?best.charge:best.reps});
+    var best={};
+    l.series.forEach(function(x){
+      var b=best[x.exId];
+      if(!b||(x.charge||1)*x.reps>(b.charge||1)*b.reps)best[x.exId]=x;
+    });
+    var t=new Date(l.date).getTime(),dt=dateJJMM(l.date);
+    Object.keys(best).forEach(function(id){(m[id]=m[id]||[]).push({t:t,date:dt,b:best[id]});});
   });
-  return out;
+  idxPoints={cle:cle,m:m};
+  return m;
+}
+function pointsExo(id){
+  var ex=getEx(id),l=indexPoints()[id]||[];
+  return l.map(function(p){return{t:p.t,date:p.date,val:ex.type==="poids"?p.b.charge:p.b.reps};});
 }
 /* Volume total par semaine : la vue d'ensemble de la charge de travail. */
 function volumeHebdo(){
@@ -4425,7 +4464,7 @@ function volumeHebdo(){
     sem[k]=(sem[k]||0)+volume(l);
   });
   return Object.keys(sem).sort().map(function(k){
-    return{t:+k,date:new Date(+k).toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit"}),
+    return{t:+k,date:dateJJMM(+k),
            val:Math.round(sem[k])};});
 }
 function vProg(){
@@ -4453,7 +4492,7 @@ function vProg(){
   if(vh.length>=2){
     var tot=vh[vh.length-1].val,prem=vh[0].val;
     var dv=Math.round((tot/Math.max(1,prem)-1)*100);
-    h+='<div class="gh">Volume hebdomadaire · '+tot.toLocaleString("fr-FR")+' kg cette semaine · '+
+    h+='<div class="gh">Volume hebdomadaire · '+nbFR(tot)+' kg cette semaine · '+
        (dv>=0?"+":"")+dv+' % depuis le début</div>'+chartMulti([{nom:"Volume total",pts:vh}],"kg");
   }else h+='<div class="emp">Deux semaines d\'entraînement sont nécessaires<br>pour tracer cette courbe.</div>';
   h+='</div>';
@@ -4485,7 +4524,7 @@ function vProg(){
 
   var poids=S.mesures.filter(function(m){return m.poidsCorps;}).map(function(m){
     return{t:new Date(m.date).getTime(),
-           date:new Date(m.date).toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit"}),val:m.poidsCorps};});
+           date:dateJJMM(m.date),val:m.poidsCorps};});
   if(poids.length>=2)h+='<div class="card"><b style="font-size:14px">Poids de corps</b><div style="margin-top:8px">'+
     chartMulti([{nom:"Poids de corps",pts:poids}],"kg")+'</div></div>';
 
@@ -4651,7 +4690,7 @@ function vTests(){
     h+='<button class="btn prim" data-act="testgo" data-id="'+id+'">'+(d?"Refaire le test":"Faire le test")+'</button></div>';
   });
   var pts=(S.tests||[]).filter(function(t){return t.exId===TESTS_EX[0];})
-    .map(function(t){return{date:new Date(t.date).toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit"}),val:t.e1rm};});
+    .map(function(t){return{date:dateJJMM(t.date),val:t.e1rm};});
   if(pts.length>=2)h+='<div class="h2">'+esc(getEx(TESTS_EX[0]).nom)+'</div><div class="card">'+chart(pts,"kg")+'</div>';
   return h+'</div>';
 }
@@ -4840,7 +4879,7 @@ function sheetSensation(){
       var r=null;RESSENTIS.forEach(function(y){if(y.k===x.k)r=y;});
       h+='<div class="histi"><span class="se">'+(r?r.e:"·")+'</span><div class="hx">'+
          '<b>'+(r?r.t:x.k)+'</b>'+(x.note?'<i>'+esc(x.note)+'</i>':'')+'</div>'+
-         '<span class="hd2">'+new Date(x.date).toLocaleDateString("fr-FR",{day:"numeric",month:"short"})+'</span></div>';});
+         '<span class="hd2">'+dateCourte(x.date)+'</span></div>';});
     h+='</div>';
   }
   h+='<button class="btn gh" data-act="fermer">Fermer</button></div></div>';
@@ -4980,7 +5019,7 @@ function sheetBilan(){
     '<div class="mut" style="margin-top:4px">Record : '+jours(Math.max(S.streakMax,st.n))+'</div>'+
     '<div class="stats">'+
     '<div class="stat"><b>'+l.series.length+'</b><span>séries</span></div>'+
-    '<div class="stat"><b>'+vol.toLocaleString("fr-FR")+'</b><span>kg soulevés</span></div>'+
+    '<div class="stat"><b>'+nbFR(vol)+'</b><span>kg soulevés</span></div>'+
     '<div class="stat"><b>'+(mn||"—")+'</b><span>minutes</span></div>'+
     '<div class="stat'+(prs?" or":"")+'"><b>'+prs+'</b><span>record'+(prs>1?'s':'')+'</span></div></div>';
   if(delta!==null)
@@ -5125,7 +5164,7 @@ function sheetInfo(){
          '<span class="hpv">'+(e.type==="poids"?fmt(x.charge)+' kg × '+x.reps:x.reps+(e.type==="temps"?' s':' reps'))+
          (x.pr?'<u>PR</u>':'')+'</span>'+
          '<span class="hpd">'+x.n+' série'+(x.n>1?'s':'')+' · '+
-         new Date(x.d).toLocaleDateString("fr-FR",{day:"numeric",month:"short"})+'</span></div>';});
+         dateCourte(x.d)+'</span></div>';});
     h+='</div>';
     if(der.length>=2){
       var g=(der[0].charge||1)*der[0].reps, p0=(der[der.length-1].charge||1)*der[der.length-1].reps;
@@ -5149,7 +5188,7 @@ function sheetInfo(){
       var r=null;RESSENTIS.forEach(function(y){if(y.k===x.k)r=y;});
       h+='<div class="histi"><span class="se">'+(r?r.e:"·")+'</span><div class="hx"><b>'+(r?r.t:x.k)+'</b>'+
          (x.note?'<i>'+esc(x.note)+'</i>':'')+'</div><span class="hd2">'+
-         new Date(x.date).toLocaleDateString("fr-FR",{day:"numeric",month:"short"})+'</span></div>';});
+         dateCourte(x.date)+'</span></div>';});
     h+='</div>';
   }
   h+='<button class="btn gh" style="margin-top:14px" data-act="sens" data-id="'+modal.id+'">Noter une sensation</button>';
@@ -5681,6 +5720,7 @@ function surAction(ev){
   }
   /* ── sélecteurs de charge visuels ── */
   if(a==="outils"){outilsOuverts=!outilsOuverts;render();return;}
+  if(a==="histoplus"){histoMax+=40;render();return;}
   if(a==="regul"){S.regul=t.getAttribute("data-r");sauver();render();return;}
   if(a==="optex"){optionsEx=true;render();return;}
   if(a==="pile"){champ.charge=parseFloat(t.getAttribute("data-w"));vibre(8);majCharge(true);return;}
@@ -5993,7 +6033,7 @@ function bilanSemaine(){
     '<div class="kpi">'+
     '<div class="k"><b>'+logs.length+'</b><span>séances</span></div>'+
     '<div class="k"><b>'+serTot+'</b><span>séries</span></div>'+
-    '<div class="k"><b>'+Math.round(volTot).toLocaleString("fr-FR")+'</b><span>kg soulevés</span></div>'+
+    '<div class="k"><b>'+nbFR(Math.round(volTot))+'</b><span>kg soulevés</span></div>'+
     '<div class="k"><b>'+mn+'</b><span>minutes</span></div>'+
     '<div class="k"><b>'+prs+'</b><span>records</span></div>'+
     '<div class="k"><b>'+st.n+'</b><span>jours de série</span></div></div>';
@@ -6013,7 +6053,7 @@ function bilanSemaine(){
   logs.forEach(function(l){
     var se=SEANCES[l.jourNum];
     h+='<h2>'+JOURS[l.jourNum]+' — '+esc(l.nom||l.seanceId)+' · '+(l.lieu==="salle"?"Salle":"Maison")+
-       ' · '+new Date(l.date).toLocaleDateString("fr-FR",{day:"numeric",month:"short"})+'</h2>'+
+       ' · '+dateCourte(l.date)+'</h2>'+
        '<table><tr><th>Exercice</th><th>Séries réalisées</th><th style="width:62px">Volume</th></tr>';
     var ids=[],vus={};
     l.series.forEach(function(s){if(!vus[s.exId]){vus[s.exId]=1;ids.push(s.exId);}});
@@ -6022,7 +6062,7 @@ function bilanSemaine(){
       var vv=0;ss.forEach(function(x){vv+=(x.charge||1)*x.reps;});
       h+='<tr><td>'+esc(e.nom)+'</td><td>'+
          ss.map(function(x){return (x.cote?x.cote+" ":"")+(e.type==="poids"?fmt(x.charge)+"×"+x.reps:x.reps)+(x.pr?" ★":"");}).join("  ·  ")+
-         '</td><td>'+Math.round(vv).toLocaleString("fr-FR")+' kg</td></tr>';});
+         '</td><td>'+nbFR(Math.round(vv))+' kg</td></tr>';});
     h+='</table>';
     if(l.notes)h+='<div class="note"><b>Note :</b> '+esc(l.notes)+'</div>';
     if(l.ressenti)h+='<div class="note">Ressenti : '+l.ressenti+' / 5'+(l.duree?' · '+l.duree+' min':'')+'</div>';
