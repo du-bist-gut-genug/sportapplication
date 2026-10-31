@@ -1,8 +1,8 @@
 /* Service worker — Programme hypertrophie
-   v22 : le manifeste et la navigation passent en reseau-d'abord,
+   v24 : le manifeste et la navigation passent en reseau-d'abord,
    les icones restent en cache-d'abord. */
 
-const VERSION = "muscu-v22";
+const VERSION = "muscu-v24";
 
 /* Mis en cache a l'installation. Un fichier manquant ne fait plus
    echouer toute l'installation. */

@@ -1,4 +1,4 @@
-PROGRAMME HYPERTROPHIE — version v22
+PROGRAMME HYPERTROPHIE — version v24
 ====================================
 
 Ce zip contient TOUS les fichiers du site, deja corriges.
@@ -6,11 +6,29 @@ Il corrige le probleme "Chrome dit que l'app est deja installee".
 
 Ce qui a change par rapport a ce qui est en ligne :
   - index.html          : les nouveautes (voir plus bas)
-  - sw.js               : muscu-v22, manifeste en reseau-d'abord
+  - sw.js               : muscu-v24, manifeste en reseau-d'abord
   - manifest.webmanifest: "id" -> /muscu-app?v=3
   Reuploade les 8 fichiers, c'est plus simple et sans risque.
 
-Les nouveautes de cette version (v22) : grille de regularite
+Les nouveautes de cette version (v24) :
+  - le cycle suivant demarre tout seul apres la semaine de deload
+    (avant, l'app restait bloquee en deload)
+  - filet de securite : si un ecran plante, l'app affiche le probleme
+    et un bouton pour revenir a l'accueil, au lieu de tomber
+  - Reglages > Problemes : journal des erreurs, a copier et transmettre
+
+Rappel de la v23 :
+  - chrono de repos : une "Dynamic Island" en haut de l'ecran
+    (touche-la pour l'ouvrir ou la replier ; pause, +15 s, Passer)
+  - repetitions : compteur a rouleaux (touche, appui long, ou glisse
+    le chiffre vers le haut / le bas)
+  - vacances scolaires zone C (Castres, academie de Toulouse) :
+    bandeau, bouton "Tout en salle", deload repousse hors des
+    petites vacances, vacances marquees dans la grille
+  Composants Dynamic island et Rolling counter : Bencho, licence MIT
+  (bencho.dev/licence), reecrits sans React.
+
+Rappel de la v22 : grille de regularite
   - sur l'accueil, une case par jour sur 6 mois ou 1 an
   - nombre de seances et pourcentage des jours prevus honores
 
@@ -75,7 +93,7 @@ VERIFICATION AVANT DE TOUCHER AU TELEPHONE
 Ouvre dans ton navigateur :
   https://du-bist-gut-genug.github.io/sportttttttt/sw.js
 
-Tu dois y lire "muscu-v22" et le mot "reseauDabord".
+Tu dois y lire "muscu-v24" et le mot "reseauDabord".
 
 Tant que tu lis encore une version anterieure, ce n'est pas republie :
 attends un peu et recharge. Inutile d'essayer d'installer avant.
